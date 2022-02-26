@@ -13,6 +13,7 @@
 		1E271E7B27B7AF300052DA8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E271E7927B7AF300052DA8E /* Main.storyboard */; };
 		1E271E7D27B7AF320052DA8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E271E7C27B7AF320052DA8E /* Assets.xcassets */; };
 		1E271E8027B7AF320052DA8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E271E7E27B7AF320052DA8E /* LaunchScreen.storyboard */; };
+		1E8F4C4627CA1E800005B4AB /* Dishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C4527CA1E800005B4AB /* Dishes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1E271E7C27B7AF320052DA8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E271E7F27B7AF320052DA8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E271E8127B7AF320052DA8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E8F4C4527CA1E800005B4AB /* Dishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dishes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		1E271E7227B7AF300052DA8E /* SideDishWithRx */ = {
 			isa = PBXGroup;
 			children = (
+				1E8F4C4927CA33F90005B4AB /* Domain */,
 				1E271E7327B7AF300052DA8E /* AppDelegate.swift */,
 				1E271E7527B7AF300052DA8E /* SceneDelegate.swift */,
 				1E271E7727B7AF300052DA8E /* ViewController.swift */,
@@ -65,6 +68,22 @@
 				1E271E8127B7AF320052DA8E /* Info.plist */,
 			);
 			path = SideDishWithRx;
+			sourceTree = "<group>";
+		};
+		1E8F4C4927CA33F90005B4AB /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				1E8F4C4A27CA33FF0005B4AB /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		1E8F4C4A27CA33FF0005B4AB /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1E8F4C4527CA1E800005B4AB /* Dishes.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +160,7 @@
 				1E271E7827B7AF300052DA8E /* ViewController.swift in Sources */,
 				1E271E7427B7AF300052DA8E /* AppDelegate.swift in Sources */,
 				1E271E7627B7AF300052DA8E /* SceneDelegate.swift in Sources */,
+				1E8F4C4627CA1E800005B4AB /* Dishes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
