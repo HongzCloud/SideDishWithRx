@@ -6,14 +6,24 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
 
+    let viewModel = DefaultDishesListViewModel(searchDishesUseCase: DefaultSearchDishesUseCase(dishesRepository: DefaultDishesRepository(networkManager: DefaultNetworkManager())))
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        bind()
+        viewModel.viewDidLoad()
     }
-
-
+    
+    func bind() {
+        viewModel.items.subscribe { items in
+            print(items)
+        }.disposed(by: disposeBag)
+    }
 }
 

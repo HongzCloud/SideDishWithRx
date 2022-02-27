@@ -1,0 +1,39 @@
+//
+//  SearchDishesUseCase.swift
+//  SideDishWithRx
+//
+//  Created by 오킹 on 2022/02/27.
+//
+
+import Foundation
+import RxSwift
+
+protocol SearchDishesUseCase {
+    func executet(requestValue: SearchDishesUseCaseRequestValue) -> Observable<[[Dish]]>
+}
+
+final class DefaultSearchDishesUseCase: SearchDishesUseCase {
+    
+    private let dishesRepository: DishesRepository
+    
+    init(dishesRepository: DishesRepository) {
+        self.dishesRepository = dishesRepository
+    }
+    
+    func executet(requestValue: SearchDishesUseCaseRequestValue) -> Observable<[[Dish]]>  {
+        
+        return Observable.zip(
+            requestValue.dishTypeList.map { path in
+                dishesRepository.fetchDishes(path: path)
+            }
+        ).map { dishesList in
+            dishesList.map { dishes in
+                dishes.body
+            }
+        }
+    }
+}
+
+struct SearchDishesUseCaseRequestValue {
+    var dishTypeList: [Endpoint<RequesteResponsable>.Path]
+}

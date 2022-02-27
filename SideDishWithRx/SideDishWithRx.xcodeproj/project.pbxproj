@@ -20,6 +20,11 @@
 		1E8F4C5427CB77850005B4AB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5327CB77850005B4AB /* NetworkError.swift */; };
 		1E8F4C5727CB78580005B4AB /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5627CB78580005B4AB /* Requestable.swift */; };
 		1E8F4C5927CB78890005B4AB /* Responsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5827CB78890005B4AB /* Responsable.swift */; };
+		1E8F4C5C27CB98B40005B4AB /* SearchDishesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5B27CB98B40005B4AB /* SearchDishesUseCase.swift */; };
+		1E8F4C6027CB9ACA0005B4AB /* DishesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5F27CB9ACA0005B4AB /* DishesRepository.swift */; };
+		1E8F4C6227CBAC190005B4AB /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C6127CBAC190005B4AB /* APIEndpoints.swift */; };
+		1ED9B20327CBBC3100428EF3 /* DishesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9B20227CBBC3100428EF3 /* DishesListViewModel.swift */; };
+		1ED9B20527CBDBD200428EF3 /* SectionOfDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9B20427CBDBD200428EF3 /* SectionOfDishes.swift */; };
 		962C9BB12E332607ABA5A593 /* Pods_SideDishWithRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E99DBFCE3599C018BCD1DB /* Pods_SideDishWithRx.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +45,11 @@
 		1E8F4C5327CB77850005B4AB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		1E8F4C5627CB78580005B4AB /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		1E8F4C5827CB78890005B4AB /* Responsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responsable.swift; sourceTree = "<group>"; };
+		1E8F4C5B27CB98B40005B4AB /* SearchDishesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDishesUseCase.swift; sourceTree = "<group>"; };
+		1E8F4C5F27CB9ACA0005B4AB /* DishesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesRepository.swift; sourceTree = "<group>"; };
+		1E8F4C6127CBAC190005B4AB /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		1ED9B20227CBBC3100428EF3 /* DishesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesListViewModel.swift; sourceTree = "<group>"; };
+		1ED9B20427CBDBD200428EF3 /* SectionOfDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOfDishes.swift; sourceTree = "<group>"; };
 		70E99DBFCE3599C018BCD1DB /* Pods_SideDishWithRx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishWithRx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA07FDF0518CCFF70E982AC /* Pods-SideDishWithRx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishWithRx.release.xcconfig"; path = "Target Support Files/Pods-SideDishWithRx/Pods-SideDishWithRx.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +87,7 @@
 		1E271E7227B7AF300052DA8E /* SideDishWithRx */ = {
 			isa = PBXGroup;
 			children = (
+				1ED9B1FE27CBBBDE00428EF3 /* Presentation */,
 				1E8F4C4B27CA3E2A0005B4AB /* Data */,
 				1E8F4C4927CA33F90005B4AB /* Domain */,
 				1E271E7327B7AF300052DA8E /* AppDelegate.swift */,
@@ -93,6 +104,7 @@
 		1E8F4C4927CA33F90005B4AB /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				1E8F4C5A27CB987F0005B4AB /* UseCase */,
 				1E8F4C4A27CA33FF0005B4AB /* Entity */,
 			);
 			path = Domain;
@@ -102,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				1E8F4C4527CA1E800005B4AB /* Dishes.swift */,
+				1ED9B20427CBDBD200428EF3 /* SectionOfDishes.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -109,6 +122,7 @@
 		1E8F4C4B27CA3E2A0005B4AB /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				1E8F4C5D27CB9A9A0005B4AB /* Repository */,
 				1E8F4C4C27CA3E520005B4AB /* Network */,
 			);
 			path = Data;
@@ -121,6 +135,7 @@
 				1E8F4C4F27CA49180005B4AB /* NetworkManager.swift */,
 				1E8F4C5127CB3A750005B4AB /* URLSessionable.swift */,
 				1E8F4C5327CB77850005B4AB /* NetworkError.swift */,
+				1E8F4C6127CBAC190005B4AB /* APIEndpoints.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -133,6 +148,54 @@
 				1E8F4C5827CB78890005B4AB /* Responsable.swift */,
 			);
 			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		1E8F4C5A27CB987F0005B4AB /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				1E8F4C5B27CB98B40005B4AB /* SearchDishesUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		1E8F4C5D27CB9A9A0005B4AB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				1E8F4C5F27CB9ACA0005B4AB /* DishesRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		1ED9B1FE27CBBBDE00428EF3 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				1ED9B1FF27CBBBED00428EF3 /* DishesScene */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		1ED9B1FF27CBBBED00428EF3 /* DishesScene */ = {
+			isa = PBXGroup;
+			children = (
+				1ED9B20027CBBC0100428EF3 /* DishesList */,
+			);
+			path = DishesScene;
+			sourceTree = "<group>";
+		};
+		1ED9B20027CBBC0100428EF3 /* DishesList */ = {
+			isa = PBXGroup;
+			children = (
+				1ED9B20127CBBC1600428EF3 /* ViewModel */,
+			);
+			path = DishesList;
+			sourceTree = "<group>";
+		};
+		1ED9B20127CBBC1600428EF3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1ED9B20227CBBC3100428EF3 /* DishesListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A8FA930E82A9616E37D35702 /* Frameworks */ = {
@@ -269,11 +332,16 @@
 			files = (
 				1E8F4C5027CA49180005B4AB /* NetworkManager.swift in Sources */,
 				1E8F4C5427CB77850005B4AB /* NetworkError.swift in Sources */,
+				1ED9B20327CBBC3100428EF3 /* DishesListViewModel.swift in Sources */,
 				1E271E7827B7AF300052DA8E /* ViewController.swift in Sources */,
 				1E8F4C5727CB78580005B4AB /* Requestable.swift in Sources */,
 				1E271E7427B7AF300052DA8E /* AppDelegate.swift in Sources */,
+				1E8F4C6027CB9ACA0005B4AB /* DishesRepository.swift in Sources */,
+				1E8F4C5C27CB98B40005B4AB /* SearchDishesUseCase.swift in Sources */,
 				1E271E7627B7AF300052DA8E /* SceneDelegate.swift in Sources */,
+				1E8F4C6227CBAC190005B4AB /* APIEndpoints.swift in Sources */,
 				1E8F4C5227CB3A750005B4AB /* URLSessionable.swift in Sources */,
+				1ED9B20527CBDBD200428EF3 /* SectionOfDishes.swift in Sources */,
 				1E8F4C4627CA1E800005B4AB /* Dishes.swift in Sources */,
 				1E8F4C5927CB78890005B4AB /* Responsable.swift in Sources */,
 				1E8F4C4E27CA3E640005B4AB /* Endpoint.swift in Sources */,
