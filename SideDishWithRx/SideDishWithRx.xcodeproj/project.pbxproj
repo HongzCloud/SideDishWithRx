@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,9 +14,17 @@
 		1E271E7D27B7AF320052DA8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E271E7C27B7AF320052DA8E /* Assets.xcassets */; };
 		1E271E8027B7AF320052DA8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E271E7E27B7AF320052DA8E /* LaunchScreen.storyboard */; };
 		1E8F4C4627CA1E800005B4AB /* Dishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C4527CA1E800005B4AB /* Dishes.swift */; };
+		1E8F4C4E27CA3E640005B4AB /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C4D27CA3E640005B4AB /* Endpoint.swift */; };
+		1E8F4C5027CA49180005B4AB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C4F27CA49180005B4AB /* NetworkManager.swift */; };
+		1E8F4C5227CB3A750005B4AB /* URLSessionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5127CB3A750005B4AB /* URLSessionable.swift */; };
+		1E8F4C5427CB77850005B4AB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5327CB77850005B4AB /* NetworkError.swift */; };
+		1E8F4C5727CB78580005B4AB /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5627CB78580005B4AB /* Requestable.swift */; };
+		1E8F4C5927CB78890005B4AB /* Responsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5827CB78890005B4AB /* Responsable.swift */; };
+		962C9BB12E332607ABA5A593 /* Pods_SideDishWithRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E99DBFCE3599C018BCD1DB /* Pods_SideDishWithRx.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CF68471E733790C1B767EE8 /* Pods-SideDishWithRx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishWithRx.debug.xcconfig"; path = "Target Support Files/Pods-SideDishWithRx/Pods-SideDishWithRx.debug.xcconfig"; sourceTree = "<group>"; };
 		1E271E7027B7AF300052DA8E /* SideDishWithRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideDishWithRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E271E7327B7AF300052DA8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E271E7527B7AF300052DA8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +34,14 @@
 		1E271E7F27B7AF320052DA8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E271E8127B7AF320052DA8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E8F4C4527CA1E800005B4AB /* Dishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dishes.swift; sourceTree = "<group>"; };
+		1E8F4C4D27CA3E640005B4AB /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		1E8F4C4F27CA49180005B4AB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		1E8F4C5127CB3A750005B4AB /* URLSessionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionable.swift; sourceTree = "<group>"; };
+		1E8F4C5327CB77850005B4AB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		1E8F4C5627CB78580005B4AB /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		1E8F4C5827CB78890005B4AB /* Responsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responsable.swift; sourceTree = "<group>"; };
+		70E99DBFCE3599C018BCD1DB /* Pods_SideDishWithRx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishWithRx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA07FDF0518CCFF70E982AC /* Pods-SideDishWithRx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SideDishWithRx.release.xcconfig"; path = "Target Support Files/Pods-SideDishWithRx/Pods-SideDishWithRx.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				962C9BB12E332607ABA5A593 /* Pods_SideDishWithRx.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +61,8 @@
 			children = (
 				1E271E7227B7AF300052DA8E /* SideDishWithRx */,
 				1E271E7127B7AF300052DA8E /* Products */,
+				C12551945FF7FB5052D77317 /* Pods */,
+				A8FA930E82A9616E37D35702 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +77,7 @@
 		1E271E7227B7AF300052DA8E /* SideDishWithRx */ = {
 			isa = PBXGroup;
 			children = (
+				1E8F4C4B27CA3E2A0005B4AB /* Data */,
 				1E8F4C4927CA33F90005B4AB /* Domain */,
 				1E271E7327B7AF300052DA8E /* AppDelegate.swift */,
 				1E271E7527B7AF300052DA8E /* SceneDelegate.swift */,
@@ -86,6 +106,52 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		1E8F4C4B27CA3E2A0005B4AB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1E8F4C4C27CA3E520005B4AB /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1E8F4C4C27CA3E520005B4AB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1E8F4C5527CB78450005B4AB /* Endpoint */,
+				1E8F4C4F27CA49180005B4AB /* NetworkManager.swift */,
+				1E8F4C5127CB3A750005B4AB /* URLSessionable.swift */,
+				1E8F4C5327CB77850005B4AB /* NetworkError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		1E8F4C5527CB78450005B4AB /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				1E8F4C4D27CA3E640005B4AB /* Endpoint.swift */,
+				1E8F4C5627CB78580005B4AB /* Requestable.swift */,
+				1E8F4C5827CB78890005B4AB /* Responsable.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		A8FA930E82A9616E37D35702 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70E99DBFCE3599C018BCD1DB /* Pods_SideDishWithRx.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C12551945FF7FB5052D77317 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1CF68471E733790C1B767EE8 /* Pods-SideDishWithRx.debug.xcconfig */,
+				EDA07FDF0518CCFF70E982AC /* Pods-SideDishWithRx.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -93,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E271E8427B7AF320052DA8E /* Build configuration list for PBXNativeTarget "SideDishWithRx" */;
 			buildPhases = (
+				8217B6FA61ACDA12BBEF4730 /* [CP] Check Pods Manifest.lock */,
 				1E271E6C27B7AF300052DA8E /* Sources */,
 				1E271E6D27B7AF300052DA8E /* Frameworks */,
 				1E271E6E27B7AF300052DA8E /* Resources */,
+				8EA2E543C065ADDD1E494182 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,7 +190,7 @@
 				};
 			};
 			buildConfigurationList = 1E271E6B27B7AF300052DA8E /* Build configuration list for PBXProject "SideDishWithRx" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -152,15 +220,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8217B6FA61ACDA12BBEF4730 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SideDishWithRx-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EA2E543C065ADDD1E494182 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SideDishWithRx/Pods-SideDishWithRx-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SideDishWithRx/Pods-SideDishWithRx-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SideDishWithRx/Pods-SideDishWithRx-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1E271E6C27B7AF300052DA8E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8F4C5027CA49180005B4AB /* NetworkManager.swift in Sources */,
+				1E8F4C5427CB77850005B4AB /* NetworkError.swift in Sources */,
 				1E271E7827B7AF300052DA8E /* ViewController.swift in Sources */,
+				1E8F4C5727CB78580005B4AB /* Requestable.swift in Sources */,
 				1E271E7427B7AF300052DA8E /* AppDelegate.swift in Sources */,
 				1E271E7627B7AF300052DA8E /* SceneDelegate.swift in Sources */,
+				1E8F4C5227CB3A750005B4AB /* URLSessionable.swift in Sources */,
 				1E8F4C4627CA1E800005B4AB /* Dishes.swift in Sources */,
+				1E8F4C5927CB78890005B4AB /* Responsable.swift in Sources */,
+				1E8F4C4E27CA3E640005B4AB /* Endpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +420,7 @@
 		};
 		1E271E8527B7AF320052DA8E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CF68471E733790C1B767EE8 /* Pods-SideDishWithRx.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -332,6 +449,7 @@
 		};
 		1E271E8627B7AF320052DA8E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDA07FDF0518CCFF70E982AC /* Pods-SideDishWithRx.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
