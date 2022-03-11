@@ -27,6 +27,7 @@ class DishesListCell: UITableViewCell {
     override func prepareForReuse() {
         self.dishTitle.text = ""
         self.dishDescription.text = ""
+        self.dishImageView.image = UIImage()
         self.dishPriceStackView.subviews.forEach { views in
             views.removeFromSuperview()
         }
