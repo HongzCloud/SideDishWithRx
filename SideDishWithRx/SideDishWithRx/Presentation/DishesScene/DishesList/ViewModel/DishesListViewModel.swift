@@ -38,7 +38,7 @@ final class DefaultDishesListViewModel: DishesListViewModel {
 
     func load() {
 
-        searchDishesUseCase.executet(requestValue: .init(dishTypeList: [.main, .side, .soup]))
+        searchDishesUseCase.execute(requestValue: .init(dishTypeList: [.main, .side, .soup]))
             .map { dishes -> [DishesListItemViewModel] in
                 let dishes = [
                 DishesListItemViewModel(header: SectionOfDishes.main.header, items: dishes[0]),

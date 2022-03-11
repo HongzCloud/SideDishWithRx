@@ -13,4 +13,7 @@ struct APIEndpoints {
         return Endpoint<Dishes>(method: .get, path: path)
     }
     
+    static func getDetailDish(hash: String) -> Endpoint<DetailDish> {
+        return Endpoint<DetailDish>(method: .get, path: .detail(hash))
+    }
 }

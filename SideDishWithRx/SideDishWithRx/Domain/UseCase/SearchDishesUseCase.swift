@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol SearchDishesUseCase {
-    func executet(requestValue: SearchDishesUseCaseRequestValue) -> Observable<[[Dish]]>
+    func execute(requestValue: SearchDishesUseCaseRequestValue) -> Observable<[[Dish]]>
 }
 
 final class DefaultSearchDishesUseCase: SearchDishesUseCase {
@@ -20,7 +20,7 @@ final class DefaultSearchDishesUseCase: SearchDishesUseCase {
         self.dishesRepository = dishesRepository
     }
     
-    func executet(requestValue: SearchDishesUseCaseRequestValue) -> Observable<[[Dish]]>  {
+    func execute(requestValue: SearchDishesUseCaseRequestValue) -> Observable<[[Dish]]>  {
         
         return Observable.zip(
             requestValue.dishTypeList.map { path in
