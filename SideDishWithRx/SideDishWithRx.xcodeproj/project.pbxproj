@@ -26,6 +26,7 @@
 		1ED810C527D9C93F00493DEE /* DishesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED810C427D9C93F00493DEE /* DishesListCell.swift */; };
 		1ED810C927DA453000493DEE /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED810C827DA453000493DEE /* BadgeView.swift */; };
 		1ED810CB27DAE87300493DEE /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED810CA27DAE87300493DEE /* PriceView.swift */; };
+		1ED810E027DB9E9800493DEE /* DetailDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED810DF27DB9E9800493DEE /* DetailDish.swift */; };
 		1ED9B20327CBBC3100428EF3 /* DishesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9B20227CBBC3100428EF3 /* DishesListViewModel.swift */; };
 		1ED9B20527CBDBD200428EF3 /* SectionOfDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9B20427CBDBD200428EF3 /* SectionOfDishes.swift */; };
 		962C9BB12E332607ABA5A593 /* Pods_SideDishWithRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E99DBFCE3599C018BCD1DB /* Pods_SideDishWithRx.framework */; };
@@ -54,6 +55,7 @@
 		1ED810C427D9C93F00493DEE /* DishesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesListCell.swift; sourceTree = "<group>"; };
 		1ED810C827DA453000493DEE /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		1ED810CA27DAE87300493DEE /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
+		1ED810DF27DB9E9800493DEE /* DetailDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDish.swift; sourceTree = "<group>"; };
 		1ED9B20227CBBC3100428EF3 /* DishesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesListViewModel.swift; sourceTree = "<group>"; };
 		1ED9B20427CBDBD200428EF3 /* SectionOfDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOfDishes.swift; sourceTree = "<group>"; };
 		70E99DBFCE3599C018BCD1DB /* Pods_SideDishWithRx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishWithRx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 			children = (
 				1E8F4C4527CA1E800005B4AB /* Dishes.swift */,
 				1ED9B20427CBDBD200428EF3 /* SectionOfDishes.swift */,
+				1ED810DF27DB9E9800493DEE /* DetailDish.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				1E271E7627B7AF300052DA8E /* SceneDelegate.swift in Sources */,
 				1E8F4C6227CBAC190005B4AB /* APIEndpoints.swift in Sources */,
 				1E8F4C5227CB3A750005B4AB /* URLSessionable.swift in Sources */,
+				1ED810E027DB9E9800493DEE /* DetailDish.swift in Sources */,
 				1ED810C927DA453000493DEE /* BadgeView.swift in Sources */,
 				1ED9B20527CBDBD200428EF3 /* SectionOfDishes.swift in Sources */,
 				1E8F4C4627CA1E800005B4AB /* Dishes.swift in Sources */,
