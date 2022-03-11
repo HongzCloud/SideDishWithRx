@@ -24,7 +24,7 @@ struct Dish: Codable {
     let title, bodyDescription: String
     let nPrice: String?
     let sPrice: String
-    let badge: [String]?
+    let badge: [BadgeType]?
 
     enum CodingKeys: String, CodingKey {
         case detailHash = "detail_hash"
@@ -41,4 +41,10 @@ struct Dish: Codable {
 enum DeliveryType: String, Codable {
     case dawnDelivery = "새벽배송"
     case nationalDelivery = "전국택배"
+}
+
+enum BadgeType: String, Codable {
+    case event = "이벤트특가"
+    case main = "메인특가"
+    case launching = "런칭특가"
 }

@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RxRelay
+import RxDataSources
 
 protocol DishesListViewModelInput {
     func viewDidLoad()
@@ -59,7 +60,18 @@ extension DefaultDishesListViewModel {
     }
 }
 
-struct DishesListItemViewModel {
+struct DishesListItemViewModel: SectionModelType {
+        
     let header: String
-    let items: [Dish]
+    var items: [Dish]
+    
+    init(original: DishesListItemViewModel, items: [Dish]) {
+        self = original
+        self.items = items
+    }
+    
+    init(header: String, items: [Dish]) {
+        self.header = header
+        self.items = items
+    }
 }

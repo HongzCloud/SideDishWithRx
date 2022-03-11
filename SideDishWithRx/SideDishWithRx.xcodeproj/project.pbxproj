@@ -23,6 +23,11 @@
 		1E8F4C5C27CB98B40005B4AB /* SearchDishesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5B27CB98B40005B4AB /* SearchDishesUseCase.swift */; };
 		1E8F4C6027CB9ACA0005B4AB /* DishesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C5F27CB9ACA0005B4AB /* DishesRepository.swift */; };
 		1E8F4C6227CBAC190005B4AB /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8F4C6127CBAC190005B4AB /* APIEndpoints.swift */; };
+		1ED810C127D9A61500493DEE /* DishesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED810C027D9A61500493DEE /* DishesListViewController.swift */; };
+		1ED810C327D9A64F00493DEE /* DishesListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ED810C227D9A64F00493DEE /* DishesListViewController.storyboard */; };
+		1ED810C527D9C93F00493DEE /* DishesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED810C427D9C93F00493DEE /* DishesListCell.swift */; };
+		1ED810C927DA453000493DEE /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED810C827DA453000493DEE /* BadgeView.swift */; };
+		1ED810CB27DAE87300493DEE /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED810CA27DAE87300493DEE /* PriceView.swift */; };
 		1ED9B20327CBBC3100428EF3 /* DishesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9B20227CBBC3100428EF3 /* DishesListViewModel.swift */; };
 		1ED9B20527CBDBD200428EF3 /* SectionOfDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9B20427CBDBD200428EF3 /* SectionOfDishes.swift */; };
 		962C9BB12E332607ABA5A593 /* Pods_SideDishWithRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E99DBFCE3599C018BCD1DB /* Pods_SideDishWithRx.framework */; };
@@ -48,6 +53,11 @@
 		1E8F4C5B27CB98B40005B4AB /* SearchDishesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDishesUseCase.swift; sourceTree = "<group>"; };
 		1E8F4C5F27CB9ACA0005B4AB /* DishesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesRepository.swift; sourceTree = "<group>"; };
 		1E8F4C6127CBAC190005B4AB /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		1ED810C027D9A61500493DEE /* DishesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesListViewController.swift; sourceTree = "<group>"; };
+		1ED810C227D9A64F00493DEE /* DishesListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DishesListViewController.storyboard; sourceTree = "<group>"; };
+		1ED810C427D9C93F00493DEE /* DishesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesListCell.swift; sourceTree = "<group>"; };
+		1ED810C827DA453000493DEE /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		1ED810CA27DAE87300493DEE /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		1ED9B20227CBBC3100428EF3 /* DishesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesListViewModel.swift; sourceTree = "<group>"; };
 		1ED9B20427CBDBD200428EF3 /* SectionOfDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionOfDishes.swift; sourceTree = "<group>"; };
 		70E99DBFCE3599C018BCD1DB /* Pods_SideDishWithRx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SideDishWithRx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +176,18 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		1ED810BF27D9A5DC00493DEE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1ED810C027D9A61500493DEE /* DishesListViewController.swift */,
+				1ED810C227D9A64F00493DEE /* DishesListViewController.storyboard */,
+				1ED810C427D9C93F00493DEE /* DishesListCell.swift */,
+				1ED810C827DA453000493DEE /* BadgeView.swift */,
+				1ED810CA27DAE87300493DEE /* PriceView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1ED9B1FE27CBBBDE00428EF3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +207,7 @@
 		1ED9B20027CBBC0100428EF3 /* DishesList */ = {
 			isa = PBXGroup;
 			children = (
+				1ED810BF27D9A5DC00493DEE /* View */,
 				1ED9B20127CBBC1600428EF3 /* ViewModel */,
 			);
 			path = DishesList;
@@ -276,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E271E8027B7AF320052DA8E /* LaunchScreen.storyboard in Resources */,
+				1ED810C327D9A64F00493DEE /* DishesListViewController.storyboard in Resources */,
 				1E271E7D27B7AF320052DA8E /* Assets.xcassets in Resources */,
 				1E271E7B27B7AF300052DA8E /* Main.storyboard in Resources */,
 			);
@@ -333,7 +357,10 @@
 				1E8F4C5027CA49180005B4AB /* NetworkManager.swift in Sources */,
 				1E8F4C5427CB77850005B4AB /* NetworkError.swift in Sources */,
 				1ED9B20327CBBC3100428EF3 /* DishesListViewModel.swift in Sources */,
+				1ED810CB27DAE87300493DEE /* PriceView.swift in Sources */,
 				1E271E7827B7AF300052DA8E /* ViewController.swift in Sources */,
+				1ED810C127D9A61500493DEE /* DishesListViewController.swift in Sources */,
+				1ED810C527D9C93F00493DEE /* DishesListCell.swift in Sources */,
 				1E8F4C5727CB78580005B4AB /* Requestable.swift in Sources */,
 				1E271E7427B7AF300052DA8E /* AppDelegate.swift in Sources */,
 				1E8F4C6027CB9ACA0005B4AB /* DishesRepository.swift in Sources */,
@@ -341,6 +368,7 @@
 				1E271E7627B7AF300052DA8E /* SceneDelegate.swift in Sources */,
 				1E8F4C6227CBAC190005B4AB /* APIEndpoints.swift in Sources */,
 				1E8F4C5227CB3A750005B4AB /* URLSessionable.swift in Sources */,
+				1ED810C927DA453000493DEE /* BadgeView.swift in Sources */,
 				1ED9B20527CBDBD200428EF3 /* SectionOfDishes.swift in Sources */,
 				1E8F4C4627CA1E800005B4AB /* Dishes.swift in Sources */,
 				1E8F4C5927CB78890005B4AB /* Responsable.swift in Sources */,

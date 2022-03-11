@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Dishes List View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="DishesListViewController" id="Y6W-OH-hqX" customClass="DishesListViewController" customModule="SideDishWithRx" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eza-8b-9GJ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DishesListCell" id="J99-9D-B2P" customClass="DishesListCell" customModule="SideDishWithRx" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="130"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J99-9D-B2P" id="cUd-eF-QIH">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Saf-Gr-DWH">
+                                                    <rect key="frame" x="20" y="4" width="127" height="122"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Saf-Gr-DWH" secondAttribute="height" multiplier="73:70" id="LIz-NJ-fh7"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ 미노리키친 ] 규동 250g" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwt-30-6XW">
+                                                    <rect key="frame" x="157" y="11" width="237" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="23" id="adp-EN-AaR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일본인의 소울푸드! 한국인도 맛있게 먹을 수 있는" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzr-HY-ngf">
+                                                    <rect key="frame" x="157" y="38" width="257" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="btV-ri-oOG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" systemColor="systemGray2Color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qhe-bF-GUC">
+                                                    <rect key="frame" x="157" y="96" width="41.5" height="23"/>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DBK-H6-3q4">
+                                                    <rect key="frame" x="157" y="66" width="41.5" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="mlI-B3-JHv"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Qhe-bF-GUC" firstAttribute="top" secondItem="DBK-H6-3q4" secondAttribute="bottom" constant="10" id="9KG-iq-Wq6"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qhe-bF-GUC" secondAttribute="trailing" id="IJU-ZX-NtP"/>
+                                                <constraint firstAttribute="trailing" secondItem="dzr-HY-ngf" secondAttribute="trailing" id="KcV-B1-NBP"/>
+                                                <constraint firstItem="Qhe-bF-GUC" firstAttribute="leading" secondItem="Saf-Gr-DWH" secondAttribute="trailing" constant="10" id="Kgk-Xi-Dr6"/>
+                                                <constraint firstItem="dzr-HY-ngf" firstAttribute="top" secondItem="Uwt-30-6XW" secondAttribute="bottom" constant="4" id="MtH-ga-6jX"/>
+                                                <constraint firstAttribute="bottom" secondItem="Qhe-bF-GUC" secondAttribute="bottom" constant="11" id="TzF-1p-nWr"/>
+                                                <constraint firstItem="Uwt-30-6XW" firstAttribute="top" secondItem="cUd-eF-QIH" secondAttribute="topMargin" id="YtK-Rg-4RX"/>
+                                                <constraint firstAttribute="bottom" secondItem="Saf-Gr-DWH" secondAttribute="bottom" constant="4" id="Z3t-lw-SMt"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="DBK-H6-3q4" secondAttribute="trailing" id="bAW-5L-Fdg"/>
+                                                <constraint firstItem="Uwt-30-6XW" firstAttribute="leading" secondItem="Saf-Gr-DWH" secondAttribute="trailing" constant="10" id="dtS-2H-Xa1"/>
+                                                <constraint firstItem="DBK-H6-3q4" firstAttribute="leading" secondItem="Saf-Gr-DWH" secondAttribute="trailing" constant="10" id="fGT-HM-Tq5"/>
+                                                <constraint firstItem="dzr-HY-ngf" firstAttribute="leading" secondItem="Saf-Gr-DWH" secondAttribute="trailing" constant="10" id="fek-ID-bbI"/>
+                                                <constraint firstItem="Saf-Gr-DWH" firstAttribute="leading" secondItem="cUd-eF-QIH" secondAttribute="leading" constant="20" symbolic="YES" id="hVI-3I-gKS"/>
+                                                <constraint firstItem="DBK-H6-3q4" firstAttribute="top" secondItem="dzr-HY-ngf" secondAttribute="bottom" constant="8" id="oMD-dz-hfe"/>
+                                                <constraint firstItem="Saf-Gr-DWH" firstAttribute="top" secondItem="cUd-eF-QIH" secondAttribute="top" constant="4" id="qUE-5h-oWi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Uwt-30-6XW" secondAttribute="trailing" id="srQ-7n-WJ8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="badgeStackView" destination="Qhe-bF-GUC" id="bRZ-3M-Mff"/>
+                                            <outlet property="dishDescription" destination="dzr-HY-ngf" id="1si-Nt-egT"/>
+                                            <outlet property="dishImageView" destination="Saf-Gr-DWH" id="rKD-Pg-qif"/>
+                                            <outlet property="dishPriceStackView" destination="DBK-H6-3q4" id="Egn-7o-0AK"/>
+                                            <outlet property="dishTitle" destination="Uwt-30-6XW" id="upf-U5-COd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="dishesListTableView" destination="eza-8b-9GJ" id="N79-3k-WZw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8.6956521739130448" y="26.785714285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
