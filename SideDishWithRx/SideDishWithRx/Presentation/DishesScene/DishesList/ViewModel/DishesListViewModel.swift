@@ -68,8 +68,7 @@ extension DefaultDishesListViewModel {
     }
     
     func itemSelected(dish: Dish) {
-        print(dish)
-        //actions?.showDetailDish(dish)
+        actions?.showDetailDish(dish)
     }
 }
 

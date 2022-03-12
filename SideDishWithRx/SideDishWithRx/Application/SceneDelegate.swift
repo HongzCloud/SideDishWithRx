@@ -10,6 +10,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let appDIContainer = AppDIContainer()
+    var appFlowCoordinator: AppFlowCoordinator?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -18,12 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         
         let navigationController = UINavigationController()
-        let storyboard = UIStoryboard(name: "DishesListViewController", bundle: .main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "DishesListViewController")
-        
-        navigationController.pushViewController(vc, animated: true)
-        
+
         window?.rootViewController = navigationController
+        appFlowCoordinator = appDIContainer.makeAppFlowCoordinator(navigationController: navigationController)
+        appFlowCoordinator?.start()
+
         window?.makeKeyAndVisible()
     }
 

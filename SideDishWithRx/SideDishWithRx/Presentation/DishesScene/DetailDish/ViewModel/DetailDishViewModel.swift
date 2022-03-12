@@ -71,5 +71,6 @@ struct DetailDishItemViewModel {
 
 extension DefaultDetailDishViewModel {
     func viewDidLoad() {
+        print("viewDidLoad")
     }
 }

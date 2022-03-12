@@ -11,7 +11,7 @@ import RxDataSources
 
 class DishesListViewController: UIViewController {
     
-    let viewModel = DefaultDishesListViewModel(searchDishesUseCase: DefaultSearchDishesUseCase(dishesRepository: DefaultDishesRepository(networkManager: DefaultNetworkManager())))
+    var viewModel: DishesListViewModel!
     var disposeBag = DisposeBag()
     
     private lazy var dataSource = RxTableViewSectionedReloadDataSource<DishesListItemViewModel>(configureCell: { [unowned self] (dataSource, tableView, indexPath, item) -> UITableViewCell in
