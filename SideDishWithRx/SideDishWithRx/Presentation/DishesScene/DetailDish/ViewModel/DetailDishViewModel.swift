@@ -21,12 +21,15 @@ protocol DetailDishViewModel: DetailDishViewModelInput, DetailDishViewModelOutpu
 
 final class DefaultDetailDishViewModel: DetailDishViewModel {
     
-    // Output
+    // MARK: - Output
+    
     let items: PublishRelay<DetailDishItemViewModel>
     
     private var disposeBag = DisposeBag()
     private var fetchDetailDishUseCase: FetchDetailDishUseCase
     private var dish: Dish
+    
+    // MARK: - Init
     
     init(fetchDetailDishUseCase: FetchDetailDishUseCase, dish: Dish) {
         self.fetchDetailDishUseCase = fetchDetailDishUseCase
@@ -37,8 +40,16 @@ final class DefaultDetailDishViewModel: DetailDishViewModel {
     
     func load(hash: String) {
         fetchDetailDishUseCase.execute(requestValue: .init(hash: hash))
-            .map{ dishInfo in
-                DetailDishItemViewModel(topImage: dishInfo.topImage)
+            .map{ [weak self] dishInfo in
+
+                DetailDishItemViewModel(thumbImages: dishInfo.thumbImages,
+                                        productDescription: dishInfo.productDescription,
+                                        point: dishInfo.point,
+                                        deliveryFee: dishInfo.deliveryFee,
+                                        deliverryInfo: dishInfo.deliveryInfo,
+                                        nPrice: dishInfo.prices.first!,
+                                        sPrice: self?.dish.sPrice,
+                                        productDetailImages: dishInfo.detailSection)
             }
             .bind(to: items)
             .disposed(by: disposeBag)
@@ -46,11 +57,19 @@ final class DefaultDetailDishViewModel: DetailDishViewModel {
 }
 
 struct DetailDishItemViewModel {
-    let topImage: String
+    let thumbImages: [String]
+    let productDescription: String
+    let point: String
+    let deliveryFee: String
+    let deliverryInfo: String
+    let nPrice: String
+    let sPrice: String?
+    let productDetailImages: [String]
 }
 
+// MARK: - Input
+
 extension DefaultDetailDishViewModel {
-    // Input
     func viewDidLoad() {
     }
 }

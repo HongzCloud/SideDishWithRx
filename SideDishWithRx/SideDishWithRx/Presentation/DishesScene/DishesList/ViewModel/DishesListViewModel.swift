@@ -11,8 +11,13 @@ import RxCocoa
 import RxRelay
 import RxDataSources
 
+struct DishesListViewModelAction {
+    let showDetailDish: (Dish) -> Void
+}
+
 protocol DishesListViewModelInput {
     func viewDidLoad()
+    func itemSelected(dish: Dish)
 }
 
 protocol DishesListViewModelOutput {
@@ -23,17 +28,20 @@ protocol DishesListViewModel: DishesListViewModelInput, DishesListViewModelOutpu
 
 final class DefaultDishesListViewModel: DishesListViewModel {
     
+    private let searchDishesUseCase: SearchDishesUseCase
+    private let actions: DishesListViewModelAction?
+    private var disposeBag = DisposeBag()
+    
     // MARK: - Output
     
     var items: PublishRelay<[DishesListItemViewModel]> = PublishRelay<[DishesListItemViewModel]>()
-
-    private let searchDishesUseCase: SearchDishesUseCase
-    private var disposeBag = DisposeBag()
     
     // MARK: - Init
 
-    init(searchDishesUseCase: SearchDishesUseCase) {
+    init(searchDishesUseCase: SearchDishesUseCase,
+         actions: DishesListViewModelAction? = nil) {
         self.searchDishesUseCase = searchDishesUseCase
+        self.actions = actions
     }
 
     func load() {
@@ -57,6 +65,11 @@ final class DefaultDishesListViewModel: DishesListViewModel {
 extension DefaultDishesListViewModel {
     func viewDidLoad() {
         load()
+    }
+    
+    func itemSelected(dish: Dish) {
+        print(dish)
+        //actions?.showDetailDish(dish)
     }
 }
 

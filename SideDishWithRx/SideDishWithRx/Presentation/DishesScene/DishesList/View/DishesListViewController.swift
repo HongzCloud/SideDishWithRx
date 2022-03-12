@@ -46,12 +46,22 @@ class DishesListViewController: UIViewController {
     
     func bind() {
 
-        // output
+        // Output
         viewModel.items
             .asDriver(onErrorJustReturn: [])
             .drive(dishesListTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
+        // Action
+        Observable.zip(
+            dishesListTableView.rx.itemSelected,
+            dishesListTableView.rx.modelSelected(Dish.self))
+            
+            .subscribe { [weak self] indexPath, item in
+                self?.viewModel.itemSelected(dish: item)
+                self?.dishesListTableView.deselectRow(at: indexPath, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func configureDataSource(_ dataSource: RxTableViewSectionedReloadDataSource<DishesListItemViewModel>) {
@@ -61,6 +71,3 @@ class DishesListViewController: UIViewController {
         }
     }
 }
-
-
-
