@@ -14,36 +14,48 @@ protocol DetailDishViewModelInput {
 }
 
 protocol DetailDishViewModelOutput {
-    var items: PublishRelay<DetailDishItemViewModel> { get }
+    var items: PublishSubject<DetailDishItemViewModel> { get }
+    var thumbnailImages: PublishRelay<Data> { get }
+    var dishInfoImagees: PublishRelay<Data> { get }
 }
 
 protocol DetailDishViewModel: DetailDishViewModelInput, DetailDishViewModelOutput {}
 
 final class DefaultDetailDishViewModel: DetailDishViewModel {
+   
+    private var disposeBag = DisposeBag()
+    private var fetchDetailDishUseCase: FetchDetailDishUseCase
+    private var imageRepository: ImageRepository
+    private var dish: Dish
     
     // MARK: - Output
     
-    let items: PublishRelay<DetailDishItemViewModel>
-    
-    private var disposeBag = DisposeBag()
-    private var fetchDetailDishUseCase: FetchDetailDishUseCase
-    private var dish: Dish
+    let items: PublishSubject<DetailDishItemViewModel>
+    let thumbnailImages: PublishRelay<Data>
+    let dishInfoImagees: PublishRelay<Data>
     
     // MARK: - Init
     
-    init(fetchDetailDishUseCase: FetchDetailDishUseCase, dish: Dish) {
+    init(fetchDetailDishUseCase: FetchDetailDishUseCase,
+         dish: Dish,
+         imageRepository: ImageRepository = ImageRepository()) {
+        
         self.fetchDetailDishUseCase = fetchDetailDishUseCase
-        self.items = PublishRelay<DetailDishItemViewModel>()
+        self.items = PublishSubject<DetailDishItemViewModel>()
         self.dish = dish
+        self.thumbnailImages = PublishRelay<Data>()
+        self.dishInfoImagees = PublishRelay<Data>()
+        self.imageRepository = imageRepository
         load(hash: dish.detailHash)
     }
-    
+
     func load(hash: String) {
         fetchDetailDishUseCase.execute(requestValue: .init(hash: hash))
             .map{ [weak self] dishInfo in
-
-                DetailDishItemViewModel(thumbImages: dishInfo.thumbImages,
-                                        productDescription: dishInfo.productDescription,
+                
+                DetailDishItemViewModel(title: self!.dish.title,
+                                        thumbImages: dishInfo.thumbImages,
+                                        productDescription: self!.dish.bodyDescription,
                                         point: dishInfo.point,
                                         deliveryFee: dishInfo.deliveryFee,
                                         deliverryInfo: dishInfo.deliveryInfo,
@@ -53,10 +65,33 @@ final class DefaultDetailDishViewModel: DetailDishViewModel {
             }
             .bind(to: items)
             .disposed(by: disposeBag)
+        
+        items
+            .flatMap { item in
+                Observable<String>.from(item.thumbImages)
+            }
+            .map { [weak self] in
+                self?.imageRepository.load(from: $0)
+            }
+            .compactMap { $0 }
+            .flatMap { $0 }
+            .bind(to: thumbnailImages)
+            .disposed(by: disposeBag)
+        
+        items
+            .flatMap { item in
+                Observable<String>.from(item.productDetailImages)
+            }
+            .flatMap { [unowned self] in
+                self.imageRepository.load(from: $0)
+            }
+            .bind(to: dishInfoImagees)
+            .disposed(by: disposeBag)
     }
 }
 
 struct DetailDishItemViewModel {
+    let title: String
     let thumbImages: [String]
     let productDescription: String
     let point: String
@@ -70,7 +105,6 @@ struct DetailDishItemViewModel {
 // MARK: - Input
 
 extension DefaultDetailDishViewModel {
-    func viewDidLoad() {
-        print("viewDidLoad")
+    func viewDidLoad() {        
     }
 }

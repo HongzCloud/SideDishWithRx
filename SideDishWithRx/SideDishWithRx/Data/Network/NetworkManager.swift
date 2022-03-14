@@ -10,6 +10,7 @@ import RxSwift
 
 protocol NetworkManager{
     func request<R: Decodable, E: RequesteResponsable>(endpoint: E) -> Observable<R> where E.Response == R
+    func request<E: RequesteResponsable>(endpoint: E) -> Observable<Data> where E.Response == Void
 }
 
 final class DefaultNetworkManager: NetworkManager {
@@ -67,5 +68,33 @@ final class DefaultNetworkManager: NetworkManager {
                 task.cancel()
             }
         }
+    }
+    
+    func request<E>(endpoint: E) -> Observable<Data> where E : RequesteResponsable, E.Response == Void {
+        let url = endpoint.url()
+        
+        return Observable.create { emitter in
+            guard let url = url else {
+                emitter.onError(NetworkError.urlError)
+                return Disposables.create()
+            }
+            
+            let task = self.session.dataTask(with: url, completionHandler: { data, response, error in
+                if response == nil || error != nil { emitter.onError(NetworkError.networkConnection) }
+        
+                if let data = data {
+                    
+                    emitter.onNext(data)
+                    emitter.onCompleted()
+                    
+                }
+            })
+            
+            task.resume()
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+        
     }
 }

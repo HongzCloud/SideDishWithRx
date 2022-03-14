@@ -9,19 +9,20 @@ import Foundation
 import RxSwift
 
 protocol DetailDishRepository {
-    func fetchDishes(hash: String) -> Observable<DetailDish>
+    func fetchDetailDish(hash: String) -> Observable<DetailDish>
 }
 
 final class DefaultDetailDishRepository: DetailDishRepository {
-
+    
     private let networkManager: NetworkManager
     
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
     }
     
-    func fetchDishes(hash: String) -> Observable<DetailDish> {
+    func fetchDetailDish(hash: String) -> Observable<DetailDish> {
         let endpoint = APIEndpoints.getDetailDish(hash: hash)
         return networkManager.request(endpoint: endpoint)
     }
+
 }

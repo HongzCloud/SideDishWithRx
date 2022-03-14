@@ -22,7 +22,7 @@ final class DefaultFetchDetailDishUseCase: FetchDetailDishUseCase {
     
     func execute(requestValue: FetchDetailDishUseCaseRequestValue) -> Observable<DetailDishInfo>  {
         
-        return detailDishRepository.fetchDishes(hash: requestValue.hash)
+        return detailDishRepository.fetchDetailDish(hash: requestValue.hash)
             .map{ ($0.data) }
     }
 }
