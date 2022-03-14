@@ -9,8 +9,9 @@ import Foundation
 
 protocol Requestable {
     var baseURL: String { get }
-    var path: Endpoint<RequesteResponsable>.Path { get }
+    var path: String { get }
     var method: HTTPMethodType { get }
+    var isFullPath: Bool { get }
 }
 
 protocol RequesteResponsable: Requestable, Responsable {}
@@ -18,8 +19,8 @@ protocol RequesteResponsable: Requestable, Responsable {}
 extension Requestable {
     func url() -> URL? {
 
-        // baseURL + path
-        let fullPath = "\(baseURL)\(path.rawValue)"
+        let fullPath =   isFullPath ? path : "\(baseURL)\(path)"
+
         guard let url = URL(string: fullPath) else { return nil }
         
         return url

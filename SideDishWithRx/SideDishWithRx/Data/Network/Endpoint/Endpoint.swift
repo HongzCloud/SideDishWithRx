@@ -8,12 +8,13 @@
 import Foundation
 
 struct Endpoint<R>: RequesteResponsable {
-     
+
     typealias Response = R
     
     let baseURL = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan"
     let method: HTTPMethodType
-    let path: Endpoint<RequesteResponsable>.Path
+    let path: String
+    let isFullPath: Bool
     
     enum Path {
         case main
@@ -27,6 +28,18 @@ struct Endpoint<R>: RequesteResponsable {
             default: return "/\(self)"
             }
         }
+    }
+    
+    init(method: HTTPMethodType, path: Endpoint<RequesteResponsable>.Path) {
+        self.method = method
+        self.path = path.rawValue
+        self.isFullPath = false
+    }
+    
+    init(method: HTTPMethodType, fullPath: String) {
+        self.method = method
+        self.path = fullPath
+        self.isFullPath = true
     }
 }
 
