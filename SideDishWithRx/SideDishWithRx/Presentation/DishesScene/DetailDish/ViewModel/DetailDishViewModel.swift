@@ -70,11 +70,9 @@ final class DefaultDetailDishViewModel: DetailDishViewModel {
             .flatMap { item in
                 Observable<String>.from(item.thumbImages)
             }
-            .map { [weak self] in
-                self?.imageRepository.load(from: $0)
+            .concatMap { [unowned self] in
+                self.imageRepository.load(from: $0)
             }
-            .compactMap { $0 }
-            .flatMap { $0 }
             .bind(to: thumbnailImages)
             .disposed(by: disposeBag)
         
@@ -82,7 +80,7 @@ final class DefaultDetailDishViewModel: DetailDishViewModel {
             .flatMap { item in
                 Observable<String>.from(item.productDetailImages)
             }
-            .flatMap { [unowned self] in
+            .concatMap { [unowned self] in
                 self.imageRepository.load(from: $0)
             }
             .bind(to: dishInfoImagees)
