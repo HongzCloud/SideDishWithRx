@@ -85,15 +85,15 @@ class BadgeView: UIView {
         ])
     }
     
-    func configBadge(_ text: String) {
-        self.badgeLabel.text = text
+    func configBadge(_ type: BadgeType) {
+        self.badgeLabel.text = type.rawValue
         
-        switch text {
-        case BadgeType.main.rawValue:
+        switch type {
+        case BadgeType.main:
             self.backgroundColor = .yellow
-        case BadgeType.event.rawValue:
+        case BadgeType.event:
             self.backgroundColor = .green
-        case BadgeType.launching.rawValue:
+        case BadgeType.launching:
             self.backgroundColor = .cyan
         default:
             break

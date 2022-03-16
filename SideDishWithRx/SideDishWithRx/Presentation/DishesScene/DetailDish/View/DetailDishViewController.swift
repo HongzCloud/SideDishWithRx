@@ -19,6 +19,9 @@ class DetailDishViewController: UIViewController {
     @IBOutlet weak var pointLabel: UILabel!
     @IBOutlet weak var deliveryFeeLabel: UILabel!
     @IBOutlet weak var deliveryInfoLabel: UILabel!
+    @IBOutlet weak var badgeStackView: UIStackView!
+    @IBOutlet weak var priceStackView: UIStackView!
+    @IBOutlet weak var badgeLabelHeight: NSLayoutConstraint!
     
     var viewModel: DetailDishViewModel!
     var disposeBag = DisposeBag()
@@ -30,6 +33,43 @@ class DetailDishViewController: UIViewController {
     }
 
     func bind() {
+        
+        viewModel.items
+            .compactMap({ $0.sPrice })
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { sPrice in
+                let sPriceView = PriceView()
+                sPriceView.configSPriceLabel(sPrice, fontSize: 20)
+                self.priceStackView.addArrangedSubview(sPriceView)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.items
+            .compactMap({ $0.nPrice })
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { nPrice in
+                let nPriceView = PriceView()
+                nPriceView.configNPriceLabel(nPrice, fontSize: 18)
+                self.priceStackView.addArrangedSubview(nPriceView)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.items
+            .map({ $0.badge })
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] badgeList in
+                if badgeList == nil {
+                    self.badgeLabelHeight.constant = 0
+                    badgeStackView.isHidden = true
+                } else {
+                    badgeList?.forEach({ badge in
+                        let badgeView = BadgeView()
+                        badgeView.configBadge(badge)
+                        self.badgeStackView.addArrangedSubview(badgeView)
+                    })
+                }
+            })
+            .disposed(by: disposeBag)
         
         viewModel.items
             .map({ $0.title })

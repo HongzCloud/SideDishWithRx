@@ -50,16 +50,16 @@ class PriceView: UIView {
         ])
     }
     
-    func configNPriceLabel(_ nPrice: String) {
+    func configSPriceLabel(_ nPrice: String, fontSize: CGFloat = 16) {
         nPriceLabel.text = nPrice
-        nPriceLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        nPriceLabel.font = UIFont.boldSystemFont(ofSize: fontSize)
         
         priceStackView.addArrangedSubview(nPriceLabel)
     }
     
-    func configSPriceLabel(_ sPrice: String) {
+    func configNPriceLabel(_ sPrice: String, fontSize: CGFloat = 16) {
         sPriceLabel.text = sPrice
-        sPriceLabel.font = UIFont.systemFont(ofSize: 16)
+        sPriceLabel.font = UIFont.systemFont(ofSize: fontSize)
         sPriceLabel.textColor = .systemGray
         
         if let text = sPriceLabel.text {

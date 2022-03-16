@@ -31,7 +31,7 @@ class DishesListViewController: UIViewController {
             }
         }
         
-        cell.fill(title: item.title, description: item.bodyDescription, nPrice: item.sPrice, sPrice: item.sPrice, badgeList: item.badge)
+        cell.fill(title: item.title, description: item.bodyDescription, nPrice: item.nPrice, sPrice: item.sPrice, badgeList: item.badge)
         
         return cell
     })

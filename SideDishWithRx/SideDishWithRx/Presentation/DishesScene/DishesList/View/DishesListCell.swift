@@ -36,22 +36,22 @@ class DishesListCell: UITableViewCell {
         }
     }
     
-    func fill(title: String, description: String, nPrice: String, sPrice: String?, badgeList: [BadgeType]?) {
+    func fill(title: String, description: String, nPrice: String?, sPrice: String, badgeList: [BadgeType]?) {
         self.dishTitle.text = title
         self.dishDescription.text = description
         
         let priceView = PriceView()
-        priceView.configNPriceLabel(nPrice)
-        if let sPrice = sPrice {
-            priceView.configSPriceLabel(sPrice)
+        priceView.configSPriceLabel(sPrice)
+        if let nPrice = nPrice {
+            priceView.configNPriceLabel(nPrice)
         }
      
         dishPriceStackView.addArrangedSubview(priceView)
         
         if let badgeList = badgeList {
-            badgeList.forEach { badgeText in
+            badgeList.forEach { badge in
                 let badgeView = BadgeView()
-                badgeView.configBadge(badgeText.rawValue)
+                badgeView.configBadge(badge)
                 self.badgeStackView.addArrangedSubview(badgeView)
             }
         }

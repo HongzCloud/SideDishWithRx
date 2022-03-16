@@ -59,9 +59,10 @@ final class DefaultDetailDishViewModel: DetailDishViewModel {
                                         point: dishInfo.point,
                                         deliveryFee: dishInfo.deliveryFee,
                                         deliverryInfo: dishInfo.deliveryInfo,
-                                        nPrice: dishInfo.prices.first!,
-                                        sPrice: self?.dish.sPrice,
-                                        productDetailImages: dishInfo.detailSection)
+                                        nPrice: self!.dish.nPrice,
+                                        sPrice: self!.dish.sPrice,
+                                        productDetailImages: dishInfo.detailSection,
+                                        badge: self?.dish.badge)
             }
             .bind(to: items)
             .disposed(by: disposeBag)
@@ -95,9 +96,10 @@ struct DetailDishItemViewModel {
     let point: String
     let deliveryFee: String
     let deliverryInfo: String
-    let nPrice: String
-    let sPrice: String?
+    let nPrice: String?
+    let sPrice: String
     let productDetailImages: [String]
+    let badge: [BadgeType]?
 }
 
 // MARK: - Input
