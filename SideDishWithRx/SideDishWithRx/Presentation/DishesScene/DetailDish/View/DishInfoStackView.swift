@@ -6,16 +6,28 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class DishInfoStackView: UIStackView {
     
-    func addArrangedImageView(_ image: UIImage, newWidth: CGFloat) {
-        let resizeImage = image.resize(newWidth: newWidth)
+    func addArrangedImageView(_ imageURL: URL, newWidth: CGFloat) {
+        let imageView = UIImageView()
+        imageView.kf.indicatorType = .activity
         
-        let imageView = UIImageView(image: resizeImage)
-        imageView.contentMode = .scaleAspectFill
+            KingfisherManager.shared.retrieveImage(with: imageURL, completionHandler: { result in
+            switch(result) {
+                case .success(let imageResult):
+                
+                let newWidth = self.bounds.width
+                let resized = imageResult.image.resize(newWidth: newWidth)
+                imageView.image = resized
         
-        self.addArrangedSubview(imageView)
+                self.addArrangedSubview(imageView)
+                
+                case .failure(let error):
+                    imageView.isHidden = true
+                }
+            })
     }
 }
 
@@ -30,5 +42,19 @@ extension UIImage {
         }
         
         return renderImage
+    }
+}
+
+extension UIImageView {
+    func setImage(imagePath: String) {
+        if let imageURL = URL(string: imagePath) {
+            self.kf.indicatorType = .activity
+            let size = self.bounds.size
+            let processor = DownsamplingImageProcessor(size: size)
+            
+            self.kf.setImage(with: imageURL,
+                             options: [.processor(processor),
+                                       .transition(.fade(0.5))])
+        }
     }
 }

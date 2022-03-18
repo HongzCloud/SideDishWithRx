@@ -14,9 +14,7 @@ protocol DetailDishViewModelInput {
 }
 
 protocol DetailDishViewModelOutput {
-    var items: PublishSubject<DetailDishItemViewModel> { get }
-    var thumbnailImages: PublishRelay<Data> { get }
-    var dishInfoImagees: PublishRelay<Data> { get }
+    var items: PublishRelay<DetailDishItemViewModel> { get }
 }
 
 protocol DetailDishViewModel: DetailDishViewModelInput, DetailDishViewModelOutput {}
@@ -25,27 +23,20 @@ final class DefaultDetailDishViewModel: DetailDishViewModel {
    
     private var disposeBag = DisposeBag()
     private var fetchDetailDishUseCase: FetchDetailDishUseCase
-    private var imageRepository: ImageRepository
     private var dish: Dish
     
     // MARK: - Output
     
-    let items: PublishSubject<DetailDishItemViewModel>
-    let thumbnailImages: PublishRelay<Data>
-    let dishInfoImagees: PublishRelay<Data>
+    let items: PublishRelay<DetailDishItemViewModel>
     
     // MARK: - Init
     
     init(fetchDetailDishUseCase: FetchDetailDishUseCase,
-         dish: Dish,
-         imageRepository: ImageRepository = ImageRepository()) {
+         dish: Dish) {
         
         self.fetchDetailDishUseCase = fetchDetailDishUseCase
-        self.items = PublishSubject<DetailDishItemViewModel>()
+        self.items = PublishRelay<DetailDishItemViewModel>()
         self.dish = dish
-        self.thumbnailImages = PublishRelay<Data>()
-        self.dishInfoImagees = PublishRelay<Data>()
-        self.imageRepository = imageRepository
         load(hash: dish.detailHash)
     }
 
@@ -65,26 +56,6 @@ final class DefaultDetailDishViewModel: DetailDishViewModel {
                                         badge: self?.dish.badge)
             }
             .bind(to: items)
-            .disposed(by: disposeBag)
-        
-        items
-            .flatMap { item in
-                Observable<String>.from(item.thumbImages)
-            }
-            .concatMap { [unowned self] in
-                self.imageRepository.load(from: $0)
-            }
-            .bind(to: thumbnailImages)
-            .disposed(by: disposeBag)
-        
-        items
-            .flatMap { item in
-                Observable<String>.from(item.productDetailImages)
-            }
-            .concatMap { [unowned self] in
-                self.imageRepository.load(from: $0)
-            }
-            .bind(to: dishInfoImagees)
             .disposed(by: disposeBag)
     }
 }
