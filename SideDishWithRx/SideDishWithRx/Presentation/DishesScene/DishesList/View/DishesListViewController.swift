@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import Kingfisher
 
 class DishesListViewController: UIViewController {
     
@@ -17,19 +18,16 @@ class DishesListViewController: UIViewController {
     private lazy var dataSource = RxTableViewSectionedReloadDataSource<DishesListItemViewModel>(configureCell: { [unowned self] (dataSource, tableView, indexPath, item) -> UITableViewCell in
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DishesListCell", for: indexPath) as? DishesListCell else { return UITableViewCell() }
-        
-        DispatchQueue.global().async {
+ 
             if let imageURL = URL(string: item.image) {
+                cell.dishImageView.kf.indicatorType = .activity
+                let size = cell.dishImageView.bounds.size
+                let processor = DownsamplingImageProcessor(size: size)
                 
-                var image = try? UIImage(data: Data(contentsOf: imageURL))
-                
-                if image != nil {
-                    DispatchQueue.main.async {
-                        cell.dishImageView.image = image
-                    }
-                }
+                cell.dishImageView.kf.setImage(with: imageURL,
+                                               options: [.processor(processor),
+                                                        .transition(.fade(0.5))])
             }
-        }
         
         cell.fill(title: item.title, description: item.bodyDescription, nPrice: item.nPrice, sPrice: item.sPrice, badgeList: item.badge)
         
