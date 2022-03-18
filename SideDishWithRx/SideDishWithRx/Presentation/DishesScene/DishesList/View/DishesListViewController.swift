@@ -18,16 +18,8 @@ class DishesListViewController: UIViewController {
     private lazy var dataSource = RxTableViewSectionedReloadDataSource<DishesListItemViewModel>(configureCell: { [unowned self] (dataSource, tableView, indexPath, item) -> UITableViewCell in
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DishesListCell", for: indexPath) as? DishesListCell else { return UITableViewCell() }
- 
-            if let imageURL = URL(string: item.image) {
-                cell.dishImageView.kf.indicatorType = .activity
-                let size = cell.dishImageView.bounds.size
-                let processor = DownsamplingImageProcessor(size: size)
-                
-                cell.dishImageView.kf.setImage(with: imageURL,
-                                               options: [.processor(processor),
-                                                        .transition(.fade(0.5))])
-            }
+        
+        cell.dishImageView.setImage(imagePath: item.image)
         
         cell.fill(title: item.title, description: item.bodyDescription, nPrice: item.nPrice, sPrice: item.sPrice, badgeList: item.badge)
         

@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 class DetailDishViewController: UIViewController {
     
@@ -101,28 +102,34 @@ class DetailDishViewController: UIViewController {
             .drive(productDescriptionLabel.rx.text)
             .disposed(by: disposeBag)
         
-        viewModel.thumbnailImages
+        viewModel.items
+            .concatMap { item in
+                Observable<String>.from(item.thumbImages)
+            }
             .observe(on: MainScheduler.instance)
-            .map({ UIImage(data: $0)})
-            .map({ image -> UIImageView in
-                let imageView = UIImageView(image: image)
-                imageView.contentMode = .scaleAspectFit
-                return imageView
-            })
+            .compactMap({ URL(string: $0) })
             .enumerated()
-            .do(onNext: { [weak self] (index: Int, imageView: UIImageView) in
+            .do(onNext: { [weak self] (index: Int, imageURL: URL) in
+                let imageView = UIImageView()
+                imageView.kf.setImage(with: imageURL)
                 self?.addThumbnail(index: index, imageView: imageView)
             })
             .subscribe()
             .disposed(by: disposeBag)
                 
-        viewModel.dishInfoImagees
+        viewModel.items
+            .concatMap { item in
+                Observable<String>.from(item.productDetailImages)
+            }
             .observe(on: MainScheduler.instance)
-            .compactMap({ UIImage(data: $0)})
-            .subscribe(onNext: { [weak self] (image: UIImage) in
-                let width = self?.dishInfoStackView.frame.width ?? 0
-                self?.dishInfoStackView.addArrangedImageView(image, newWidth: width)
+            .compactMap({ URL(string: $0) })
+            .enumerated()
+            .do(onNext: { [weak self] (index: Int, imageURL: URL) in
+                let newWidth = self!.view.bounds.width
+                self!.dishInfoStackView.addArrangedImageView(imageURL,
+                                                            newWidth: newWidth)
             })
+            .subscribe()
             .disposed(by: disposeBag)
     }
     
