@@ -10,24 +10,14 @@ import UIKit
 
 final class DishesSceneDIContrainer: DishesSceneFlowCoordinatorDependencies {
     
-    // MARK: - Repository
-    
-    func makeDishesRepository() -> DishesRepository {
-        return DefaultDishesRepository(networkManager: DefaultNetworkManager())
-    }
-    
-    func makeDetailDishRepository() -> DetailDishRepository {
-        return DefaultDetailDishRepository(networkManager: DefaultNetworkManager())
-    }
-    
     // MARK: - UseCase
     
     func makeFetchDetailDishUseCase() -> SearchDishesUseCase {
-        return DefaultSearchDishesUseCase(dishesRepository: makeDishesRepository())
+        return DefaultSearchDishesUseCase(networkManager: DefaultNetworkManager())
     }
     
     func makeFetchDetailDishUseCase() -> FetchDetailDishUseCase {
-        return DefaultFetchDetailDishUseCase(detailDishRepository: makeDetailDishRepository())
+        return DefaultFetchDetailDishUseCase(networkManager: DefaultNetworkManager())
     }
     
     // MARK: - ViewModel

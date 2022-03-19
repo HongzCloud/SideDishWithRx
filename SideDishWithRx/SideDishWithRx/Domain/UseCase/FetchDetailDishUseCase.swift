@@ -14,16 +14,17 @@ protocol FetchDetailDishUseCase {
 
 final class DefaultFetchDetailDishUseCase: FetchDetailDishUseCase {
     
-    private let detailDishRepository: DetailDishRepository
+    private let networkManager: NetworkManager
     
-    init(detailDishRepository: DetailDishRepository) {
-        self.detailDishRepository = detailDishRepository
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
     }
     
     func execute(requestValue: FetchDetailDishUseCaseRequestValue) -> Observable<DetailDishInfo>  {
         
-        return detailDishRepository.fetchDetailDish(hash: requestValue.hash)
-            .map{ ($0.data) }
+        let endpoint = APIEndpoints.getDetailDish(hash: requestValue.hash)
+        return networkManager.request(endpoint: endpoint)
+        .map{ ($0.data) }
     }
 }
 

@@ -14,17 +14,18 @@ protocol SearchDishesUseCase {
 
 final class DefaultSearchDishesUseCase: SearchDishesUseCase {
     
-    private let dishesRepository: DishesRepository
+    private let networkManager: NetworkManager
     
-    init(dishesRepository: DishesRepository) {
-        self.dishesRepository = dishesRepository
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
     }
     
     func execute(requestValue: SearchDishesUseCaseRequestValue) -> Observable<[[Dish]]>  {
         
         return Observable.zip(
-            requestValue.dishTypeList.map { path in
-                dishesRepository.fetchDishes(path: path)
+            requestValue.dishTypeList.map { path -> Observable<Dishes> in
+                let endpoint = APIEndpoints.getDishes(path: path)
+                return networkManager.request(endpoint: endpoint)
             }
         ).map { dishesList in
             dishesList.map { dishes in
