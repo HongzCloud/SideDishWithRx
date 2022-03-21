@@ -1,6 +1,13 @@
 # SideDishWithRx
 코드스쿼드 반찬 주문 앱
 
+## 학습 키워드
+- 메모리 캐시와 디스크 캐시
+- 캡처리스트
+- UILable 줄바꿈 속성
+- 강한 순환 참조
+- ViewModel의 Input, Output, Action
+
 ## 사용기술
 - RxSwift
 - RxDataSource
