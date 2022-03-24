@@ -203,6 +203,9 @@
                                                                 </constraints>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="didTappedQuantityDownButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lSy-ok-Zvn"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Kr-aP-m3Q">
                                                                 <rect key="frame" x="0.0" y="0.0" width="287.5" height="77"/>
@@ -218,6 +221,9 @@
                                                                 </constraints>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="chevron.up" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="didTappedQuantityUpButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1D2-nB-cN1"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -315,9 +321,11 @@
                         <outlet property="deliveryInfoLabel" destination="8ic-aJ-50r" id="mW9-Ne-o2M"/>
                         <outlet property="dishInfoStackView" destination="h3y-73-5Xu" id="JI3-02-C2Q"/>
                         <outlet property="dishTitleLabel" destination="fow-nd-JUp" id="GTP-AM-6re"/>
+                        <outlet property="orderPriceLabel" destination="S9t-Mx-PDG" id="UMB-JU-dA1"/>
                         <outlet property="pointLabel" destination="hnJ-Zg-DBI" id="Bnj-aA-QHr"/>
                         <outlet property="priceStackView" destination="1kj-pW-rpe" id="cKa-ne-1sz"/>
                         <outlet property="productDescriptionLabel" destination="bge-yZ-NKC" id="pIi-UP-n1a"/>
+                        <outlet property="quantityLabel" destination="6Kr-aP-m3Q" id="OZS-aN-7ii"/>
                         <outlet property="thumbnailScrollView" destination="Gnt-1H-TTG" id="xLg-ik-Kya"/>
                     </connections>
                 </viewController>

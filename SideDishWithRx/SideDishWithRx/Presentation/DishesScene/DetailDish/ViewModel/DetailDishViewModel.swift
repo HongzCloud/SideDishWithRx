@@ -11,10 +11,14 @@ import RxCocoa
 
 protocol DetailDishViewModelInput {
     func viewDidLoad()
+    func didTappedQuantityUpButton()
+    func didTappedQuantityDownButton()
 }
 
 protocol DetailDishViewModelOutput {
     var items: PublishRelay<DetailDishItemViewModel> { get }
+    var orderQuantity: BehaviorRelay<Int> { get }
+    var orderPrice: BehaviorRelay<String> { get }
 }
 
 protocol DetailDishViewModel: DetailDishViewModelInput, DetailDishViewModelOutput {}
@@ -28,6 +32,8 @@ final class DefaultDetailDishViewModel: DetailDishViewModel {
     // MARK: - Output
     
     let items: PublishRelay<DetailDishItemViewModel>
+    let orderQuantity: BehaviorRelay<Int>
+    let orderPrice: BehaviorRelay<String>
     
     // MARK: - Init
     
@@ -37,6 +43,8 @@ final class DefaultDetailDishViewModel: DetailDishViewModel {
         self.fetchDetailDishUseCase = fetchDetailDishUseCase
         self.items = PublishRelay<DetailDishItemViewModel>()
         self.dish = dish
+        self.orderQuantity = BehaviorRelay<Int>(value: 1)
+        self.orderPrice = BehaviorRelay<String>(value: "\(dish.sPrice)")
         load(hash: dish.detailHash)
     }
 
@@ -76,6 +84,40 @@ struct DetailDishItemViewModel {
 // MARK: - Input
 
 extension DefaultDetailDishViewModel {
-    func viewDidLoad() {        
+    func viewDidLoad() {}
+    
+    func didTappedQuantityUpButton() {
+        orderQuantity.accept(orderQuantity.value+1)
+        orderPrice.accept(calculateOrderPrice())
+    }
+    
+    func didTappedQuantityDownButton() {
+        if orderQuantity.value > 1 {
+            orderQuantity.accept(orderQuantity.value-1)
+            orderPrice.accept(calculateOrderPrice())
+        }
+    }
+    
+    // MARK: - Private
+    
+    private func calculateOrderPrice() -> String {
+        let price = convertPriceToInt(dish.sPrice)
+        let quantity = orderQuantity.value
+        let totalPriceInt = price * quantity
+        let totalPrice = convertPriceToString(totalPriceInt)
+        
+        return totalPrice
+    }
+    
+    private func convertPriceToInt(_ price: String) -> Int {
+        let price = Int(price.filter({ $0.isNumber }))
+        return price ?? 0
+    }
+    
+    private func convertPriceToString(_ price: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+
+        return (numberFormatter.string(from: NSNumber(value: price)) ?? "") + " 원"
     }
 }

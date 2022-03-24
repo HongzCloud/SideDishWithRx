@@ -23,6 +23,8 @@ class DetailDishViewController: UIViewController {
     @IBOutlet weak var badgeStackView: UIStackView!
     @IBOutlet weak var priceStackView: UIStackView!
     @IBOutlet weak var badgeLabelHeight: NSLayoutConstraint!
+    @IBOutlet weak var orderPriceLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
     
     var viewModel: DetailDishViewModel!
     var disposeBag = DisposeBag()
@@ -131,6 +133,17 @@ class DetailDishViewController: UIViewController {
             })
             .subscribe()
             .disposed(by: disposeBag)
+                
+        viewModel.orderQuantity
+            .asDriver(onErrorJustReturn: 1)
+            .map({ String($0) })
+            .drive(quantityLabel.rx.text)
+            .disposed(by: disposeBag)
+                
+        viewModel.orderPrice
+            .asDriver(onErrorJustReturn: "")
+            .drive(orderPriceLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     private func addThumbnail(index: Int, imageView: UIImageView) {
@@ -141,5 +154,11 @@ class DetailDishViewController: UIViewController {
         
         self.thumbnailScrollView.contentSize.width = imageView.frame.width * CGFloat(index+1)
         self.thumbnailScrollView.addSubview(imageView)
+    }
+    @IBAction func didTappedQuantityUpButton(_ sender: Any) {
+        viewModel.didTappedQuantityUpButton()
+    }
+    @IBAction func didTappedQuantityDownButton(_ sender: Any) {
+        viewModel.didTappedQuantityDownButton()
     }
 }
